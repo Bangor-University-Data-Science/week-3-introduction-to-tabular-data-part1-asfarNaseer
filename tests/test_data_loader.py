@@ -1,25 +1,7 @@
 import pandas as pd
+from titanic_analysis.data_loader import load_titanic_data
 
-def create_summary_table(df):
-    summary_data = {
-        'Feature Name': df.columns,
-        'Data Type': df.dtypes,
-        'Number of Unique Values': [df[col].nunique() for col in df.columns],
-        'Missing Values': [df[col].isnull().sum() for col in df.columns],
-    }
-    
-    # Create-the-summary-DataFrame 
-    summary_df = pd.DataFrame(summary_data)
-    
-    # Handle-Missing-Values 
-    summary_df['Has Missing Values?'] = summary_df['Missing Values'].apply(lambda x: 'Yes' if x > 0 else 'No')
-    summary_df.drop(columns='Missing Values', inplace=True)
-    
-    return summary_df
-
-# Test-function-execution and output
-if __name__ == "__main__":
-    filepath = "data/titanic.csv"  
-    titanic_data = pd.read_csv(filepath)
-    summary_table = create_summary_table(titanic_data)
-    print(summary_table)
+def test_load_titanic_data():
+    df = load_titanic_data("../../data/titanic.csv")
+    assert isinstance(df, pd.DataFrame), "The returned object should be a DataFrame"
+    assert not df.empty, "The DataFrame should not be empty"
