@@ -8,9 +8,9 @@ def display_unique_values(df, categorical_features):
     
     return unique_values
 
-# Function-execution-test
+# Function-execution-test 
 if __name__ == "__main__":
-    # Load-Titanic-dataset
+    # Load-Titanic-dataset 
     df = pd.read_csv('data/titanic.csv') 
 
     categorical_features = ['Sex', 'Embarked']  

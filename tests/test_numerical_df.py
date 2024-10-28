@@ -23,7 +23,7 @@ def create_feature_type_dict(df):
 
     return feature_types
 
-# Test-function-execution and output
+# Test-function-execution and output 
 if __name__ == "__main__":
     filepath = "data/titanic.csv" 
     titanic_data = pd.read_csv(filepath)

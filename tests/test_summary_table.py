@@ -8,7 +8,7 @@ def create_summary_table(df):
         'Missing Values': [df[col].isnull().sum() for col in df.columns],
     }
     
-    # Create-the-summary-DataFrame
+    # Create-the-summary-DataFrame 
     summary_df = pd.DataFrame(summary_data)
     
     # Handle-Missing-Values
