@@ -1,18 +1,14 @@
+from titanic_analysis.categorical_unique_values import display_unique_values
 import pandas as pd
-
-def display_unique_values(df, categorical_features):
-    unique_values = {}
+def test_display_unique_values():
+    # Mock a DataFrame
+    mock_df = pd.DataFrame(data={
+        'Sex': ['male', 'female', 'female', 'male'],
+        'Embarked': ['S', 'C', 'S', 'Q']
+    })
+    categorical_features = ['Sex', 'Embarked']
     
-    for feature in categorical_features:
-        unique_values[feature] = df[feature].unique().tolist()
+    unique_values = display_unique_values(mock_df, categorical_features)
     
-    return unique_values
-
-# Function-execution-test 
-if __name__ == "__main__":
-    # Load-Titanic-dataset 
-    df = pd.read_csv('data/titanic.csv') 
-
-    categorical_features = ['Sex', 'Embarked']  
-    unique_values = display_unique_values(df, categorical_features)
-    print(unique_values)
+    assert isinstance(unique_values, dict), "The result should be a dictionary"
+    assert 'Sex' in unique_values and 'Embarked' in unique_values, "Both categorical features should be in the result"
